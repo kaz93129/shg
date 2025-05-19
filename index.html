@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KAZ VISUAL - Romansa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lora:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #111;
+      font-family: 'Lora', serif;
+      color: white;
+    }
+
+    #splash {
+      position: fixed;
+      z-index: 9999;
+      background: radial-gradient(circle, #2b0033 0%, #000 100%);
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 1s ease;
+    }
+    .splash-content {
+      text-align: center;
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      animation: fadeInSplash 2s ease-out forwards;
+    }
+    .heart-symbol {
+      font-size: 5rem;
+      color: #ff3cac;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+      animation: pulse 2s infinite;
+    }
+    .heart-symbol:hover {
+      transform: scale(1.2);
+    }
+    #splash.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeInSplash {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    #gallery {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+    #gallery.fade-in {
+      opacity: 1;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+      pointer-events: auto;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .caption {
+      position: absolute;
+      bottom: 5vw;
+      left: 5vw;
+      right: 5vw;
+      max-width: 90%;
+      background: none;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.8s ease;
+      text-align: left;
+    }
+    .slide.active .caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .caption h2 {
+      margin: 0 0 5px;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      color: #ff3cac;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #ff3cac, 0 0 10px #ff3cac, 0 0 20px #ff3cac, 0 0 40px rgba(255, 60, 172, 0.5);
+      animation: neonFadeIn 1s ease-in-out forwards;
+    }
+    .caption p {
+      margin: 0;
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      text-shadow: 0 0 3px rgba(0,0,0,0.4);
+      line-height: 1.6;
+      animation: fadeInText 1.2s ease-in-out forwards;
+    }
+    @keyframes neonFadeIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeInText {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splash">
+  <div class="splash-content">
+    <div class="heart-symbol">♥</div>
+    <p>TAP MY HEART</p>
+  </div>
+</div>
+
+<!-- AWAL HTML sama seperti sebelumnya -->
+<!-- Mulai bagian galeri slide -->
+<div id="gallery">
+  <div class="slide">
+    <img src="1.jpg" alt="Slide 1" />
+    <div class="caption" data-caption-title="Pertemuan Tak Terduga" data-caption-text="Tatapan pertama itu, meski singkat, seolah mengulang ribuan kisah lampau.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="2.jpg" alt="Slide 2" />
+    <div class="caption" data-caption-title="Sentuhan Pertama" data-caption-text="Jari-jari yang saling menyapa, menyalurkan sunyi yang belum pernah tersampaikan.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="3.jpg" alt="Slide 3" />
+    <div class="caption" data-caption-title="Janji Dalam Senja" data-caption-text="Ketika langit mulai meredup, janji pun terpatri, tak terucap namun pasti.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="4.jpg" alt="Slide 4" />
+    <div class="caption" data-caption-title="Langkah Bersama" data-caption-text="Setiap langkah terasa ringan saat ada kamu di sampingku.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="5.jpg" alt="Slide 5" />
+    <div class="caption" data-caption-title="Bicara Tanpa Kata" data-caption-text="Diam kita berbicara lebih keras dari ribuan kata.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="6.jpg" alt="Slide 6" />
+    <div class="caption" data-caption-title="Hujan dan Rindu" data-caption-text="Di antara rintik hujan, rinduku mencarimu.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="7.jpg" alt="Slide 7" />
+    <div class="caption" data-caption-title="Rahasia Senyum" data-caption-text="Senyummu menyimpan rahasia yang tak ingin kupecahkan.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="8.jpg" alt="Slide 8" />
+    <div class="caption" data-caption-title="Dalam Pelukan" data-caption-text="Segalanya terasa aman dalam pelukanmu.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="9.jpg" alt="Slide 9" />
+    <div class="caption" data-caption-title="Tatap Terakhir" data-caption-text="Bahkan tatapan terakhir pun menyimpan harapan.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="10.jpg" alt="Slide 10" />
+    <div class="caption" data-caption-title="Kenangan Abadi" data-caption-text="Meski waktu berlalu, kenangan ini tetap abadi.">
+      <h2></h2><p></p>
+    </div>
+  </div>
+</div>
+<!-- SISANYA tetap seperti versi sebelumnya: script, splash screen, dll -->
+
+<!-- Background Music -->
+<audio id="bg-music" src="rindu-dan-penantian.ogg" preload="auto" loop></audio>
+
+<script>
+  const splash = document.getElementById('splash');
+  const heart = document.querySelector('.heart-symbol');
+  const gallery = document.getElementById('gallery');
+  const music = document.getElementById('bg-music');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach((s, idx) => {
+      s.classList.toggle('active', idx === i);
+    });
+    const caption = slides[i].querySelector('.caption');
+    const titleEl = caption.querySelector('h2');
+    const textEl = caption.querySelector('p');
+    titleEl.textContent = caption.dataset.captionTitle;
+    textEl.textContent = caption.dataset.captionText;
+    index = i;
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  heart.addEventListener('click', () => {
+    splash.classList.add('fade-out');
+    gallery.classList.add('fade-in');
+    music.play().catch(err => console.warn("Audio tidak dapat diputar otomatis:", err));
+  });
+
+  // Swipe gesture
+  let startX = 0;
+  document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 50) {
+      index = diff < 0 ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    }
+  });
+
+  // Mulai slideshow
+  showSlide(0);
+  setInterval(nextSlide, 6000);
+</script>
+
+</body>
+</html>
